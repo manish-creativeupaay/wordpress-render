@@ -4,47 +4,14 @@ services:
   env: docker
   plan: free
   autoDeploy: false
-  disk:
-    name: wordpress
-    mountPath: /var/www/html
-    sizeGB: 1
   envVars:
   - key: WORDPRESS_DB_HOST
-    fromService:
-      name: mysql-wordpress
-      type: pserv
-      property: host
+    value: ep-snowy-fire-a8mzizh1.eastus2.azure.neon.tech  
   - key: WORDPRESS_DB_NAME
-    fromService:
-      name: mysql-wordpress
-      type: pserv
-      envVarKey: MYSQL_DATABASE
+    value: neondb  
   - key: WORDPRESS_DB_USER
-    fromService:
-      name: mysql-wordpress
-      type: pserv
-      envVarKey: MYSQL_USER
+    value: neondb_owner  
   - key: WORDPRESS_DB_PASSWORD
-    fromService:
-      name: mysql-wordpress
-      type: pserv
-      envVarKey: MYSQL_PASSWORD
-- type: pserv
-  name: mysql-wordpress
-  repo: https://github.com/render-examples/mysql.git
-  env: docker
-  plan: free
-  autoDeploy: false
-  disk:
-    name: mysql-wordpress
-    mountPath: /var/lib/mysql
-    sizeGB: 1
-  envVars:
-  - key: MYSQL_DATABASE
-    value: wordpress
-  - key: MYSQL_USER
-    value: wordpress
-  - key: MYSQL_PASSWORD
-    generateValue: true
-  - key: MYSQL_ROOT_PASSWORD
-    generateValue: true
+    value: CGlv0feacQw3  
+  - key: WORDPRESS_DB_SSL
+    value: require  
